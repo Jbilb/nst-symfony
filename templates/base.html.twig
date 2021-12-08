@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr" class="?php echo $classHTML; ?>">
+    <head>{% include '_includes/_head.html.twig' %}</head>
+
+    <body id="top-page" class= {{ PAGE_name }}>
+        <div class="c-transition <?php echo $classAnimation; ?>">
+            <div class="c-transition_wrapper">
+                <div class="c-transition_wrapper_sigle">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+        {% include '_includes/_nav.html.twig' %}
+        {% include '_includes/_menu.html.twig' %}
+
+        <div id="wrapper" class="blanc-bg  <?php echo $classAnimation; ?>">
+            {% include '_includes/_header.html.twig' %}
+            {% block wrapper %}Hello world!{% endblock %}
+            {% include '_includes/_footer.html.twig' %}
+            <!-- END WRAPPER -->
+        </div>
+    </body>
+</html>

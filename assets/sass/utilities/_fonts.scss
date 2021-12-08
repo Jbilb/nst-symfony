@@ -1,0 +1,63 @@
+/*************************************************
+// INCLUDE DES FONTS
+*************************************************/
+
+/*@font-face {
+    font-family: 'font';
+    src: url('../fonts/font.eot');
+    src: url('../fonts/font.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/font.woff2') format('woff2'),
+        url('../fonts/font.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+
+/*************************************************
+// STYLE DES FONTS
+*************************************************/
+
+
+$font : 'Open Sans';
+
+$regular : 400;
+
+$medium : 500;
+
+$bold : 700;
+
+$black : 900;
+
+
+.regular {
+    font-weight: $regular;
+}
+
+.medium {
+    font-weight: $medium;
+}
+
+.bold {
+    font-weight: $bold;
+}
+
+.black {
+    font-weight: $black;
+}
+
+%font {
+    font-family: $font;
+    font-weight: normal;
+    font-style: normal;
+}
+
+%font-bold {
+    font-family: $font;
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+/*************************************************
+// ICOMOON
+*************************************************/

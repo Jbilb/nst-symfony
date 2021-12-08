@@ -1,0 +1,54 @@
+/*************************************************
+// STYLES DE CARATERES
+*************************************************/
+
+.paragr,
+p {
+    @include fluid-text(12px, 12px, 16px, 16px, 991px, 1920px);
+    font-family: $font;
+    font-weight: $regular;
+    text-align: left;
+    color: $gris;
+    line-height: 1.8 !important;
+    margin: 0;
+
+    strong {
+        font-weight: $bold;
+    }
+
+    @media(max-width:$screen-md) {
+        font-size: 14px;
+    }
+}
+
+/*************************************************
+// TITRES H1/H2/H3
+*************************************************/
+
+
+.h1 {
+    color: aquamarine;
+    margin: 0;
+    font-family: $font;
+    font-weight: $black;
+    @include fluid-text(30px, 30px, 50px, 50px, 991px, 1920px);
+    line-height: 1.1 !important;
+
+    @media screen and (max-width:$screen-md) {
+        font-size: 25px;
+
+        br {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width:340px) {
+        font-size: 22px;
+    }
+}
+
+.h2 {}
+
+.h3 {}
+
+.h4 {}

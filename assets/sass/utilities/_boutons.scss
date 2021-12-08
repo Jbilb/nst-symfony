@@ -1,0 +1,41 @@
+/*************************************************
+// BOUTONS
+*************************************************/
+
+.bouton,
+.bouton:focus {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    height: 7rem;
+    font-family: $font;
+    font-size: 1.8rem;
+    background-color: $noir;
+    color: $blanc;
+    transition: all .3s ease;
+
+    @media screen and (max-width:$screen-md) {
+        height: 50px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    &.float-right {
+        float: right;
+
+        @media screen and (max-width:$screen-md) {
+            float: none;
+        }
+    }
+
+    &:hover {
+
+        @media screen and (min-width:$screen-md) {
+            background-color: $noir;
+            color: $blanc;
+            transition: all .3s ease;
+        }
+    }
+}

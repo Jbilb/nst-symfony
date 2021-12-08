@@ -1,0 +1,16 @@
+<div class="p-menu">
+    <ul class="p-nav_menu_nav">
+        <li class= {% if PAGE_name == "accueil" %} "active" {% endif %}>
+            <a href="{{ path('accueil') }}" title="NAV_TITLE_accueil">ACCUEIL</a>
+        </li>
+        <li class= {% if PAGE_name == "page2" %}"active"{% endif %}>
+            <a href="{{ path('page2') }}" title="NAV_TITLE_page2">PAGE 2</a>
+        </li>
+        <li class= {% if PAGE_name == "page3" %}"active"{% endif %}>
+            <a href="{{ path('page3') }}" title="NAV_TITLE_page3">PAGE 3</a>
+        </li>
+        <li class= {% if PAGE_name == "contact" %}"active"{% endif %}>
+            <a href="{{ path('contact') }}" title="NAV_TITLE_contact">Contact</a>
+        </li>
+    </ul>
+</div>

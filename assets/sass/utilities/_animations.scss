@@ -1,0 +1,282 @@
+//======================================================
+// ANIMATIONS
+//======================================================
+@keyframes height-100-0 {
+    from {
+        height: 100%;
+    }
+
+    to {
+        height: 0;
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes trans-opacity-top-100 {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes trans-opacity-bot-100 {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes trans-opacity-left-100 {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes trans-opacity-right-100 {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes rebond-start {
+    from {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    33% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+
+    66% {
+        opacity: 1;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+//======================================================
+// CHARGEMENT DU SITE + ANIM ENTRE PAGES
+//======================================================
+
+.c-transition {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    transition: all 0.5s ease;
+
+    &:after {
+        display: block;
+        content: '';
+        height: 100%;
+        width: 100%;
+        background-color: $noir;
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: 100%;
+        z-index: 1;
+    }
+
+    &:before {
+        display: block;
+        content: '';
+        height: 100%;
+        width: 100%;
+        background-color: $noir;
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: 100%;
+        z-index: 0;
+    }
+
+    &_wrapper {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s ease;
+
+        &_sigle {
+            position: relative;
+            width: 5vw;
+            opacity: 0;
+            z-index: 4;
+            top: 0;
+
+            @media screen and (max-width:$screen-md) {
+                width: 60px;
+                max-width: 80%;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    &.under {
+        z-index: -999;
+        opacity: 0;
+    }
+
+    &.first {
+
+        &:after {
+            background-color: $noir;
+            top: 0;
+            right: 0;
+            opacity: 1;
+        }
+
+        &:before {
+            top: 0;
+            opacity: 1;
+            right: 0;
+            background-color: $noir;
+        }
+
+        &.anim {
+            .c-transition_wrapper_sigle {
+                animation: rebond-start 1s linear forwards 0.2s;
+            }
+        }
+
+        &.remove {
+            top: -100%;
+            opacity: 0;
+            transition: top 0.5s ease 0.9s, opacity 0.1s linear 1s;
+
+            &:after {
+                top: -100%;
+                transition: top 0.8s ease;
+            }
+
+            &:before {
+                top: -100%;
+                transition: top 0.8s ease;
+            }
+
+            .c-transition_wrapper_sigle {
+                top: -100%;
+                transition: top 0.7s ease 0.15s;
+            }
+        }
+    }
+}
+
+
+//======================================================
+// PARALLAX SPEED
+//======================================================
+
+.parallax {
+    transition: all 0.5s linear;
+
+    &.speed2 {
+        transition: all 0.6s linear;
+    }
+}
+
+
+//======================================================
+// WOOW EFFECT
+//======================================================
+
+
+.anim-opacity {
+    position: relative;
+    transition: all 1s;
+}
+
+.anim-opacity.masked {
+    transition: none;
+    opacity: 0;
+}
+
+.anim-bottom {
+    position: relative;
+    transition: all 1s;
+}
+
+.anim-bottom.masked {
+    transition: none;
+    transform: translateY(50%);
+    opacity: 0;
+}
+
+.anim-right {
+    position: relative;
+    transition: all 1s;
+}
+
+.anim-right.masked {
+    transition: none;
+    transform: translateX(50%);
+    opacity: 0;
+}
+
+.anim-left {
+    position: relative;
+    transition: all 1s;
+}
+
+.anim-left.masked {
+    transition: none;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+.anim-delay {
+    @for $i from 1 through 5 {
+        &--#{$i} {
+            transition-delay: $i * .2s;
+            z-index: $i;
+        }
+    }
+}

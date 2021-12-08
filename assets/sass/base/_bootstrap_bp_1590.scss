@@ -1,0 +1,60 @@
+
+// Container personnalisé pour les grands ecran
+$ContainerBigScreen: 1560px;
+
+// Grands écrans desktop
+$screen-xl: 1590px;
+
+// Minimum screen size (col xl)
+$screen-xl: ($screen-xl);
+
+// Maximum screen size (desktop LG)
+$screen-lg-max: ($screen-xl - 1);
+
+// On relance la fonction " Make grid " avec le nouveau break point
+@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i} .col-xl-#{$i}") {
+  @for $i from (1 + 1) through $grid-columns {
+      $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}, .col-xl-#{$i}";
+  }
+  #{$list} {
+    position: relative;
+    // Prevent columns from collapsing when empty
+    min-height: 1px;
+    // Inner gutter via padding
+    padding-left: ($grid-gutter-width / 2);
+    padding-right: ($grid-gutter-width / 2);
+  }
+}
+
+@include make-grid-columns;
+
+// Container width for the custom grid.
+//
+// Set the container width, and override it for fixed navbars in media queries.
+.container {
+  @media (min-width: $screen-xl) {
+    width: $ContainerBigScreen;
+  }
+}
+
+// Function that creates the custom grid
+// Intermediate small grid
+@media (min-width: $screen-xl) {
+  @include make-grid(xl);
+}
+
+// Add visibility "visible-is" class for the custom grid
+@media (min-width: $screen-xl) {
+  @include responsive-visibility('.visible-xl');
+}
+
+// Add hidden "hidden-is" class for the custom grid
+@media (min-width: $screen-xl) {
+  @include responsive-invisibility('.hidden-xl');
+}
+
+// Define the "visible-is" class as hidden in all other grid widths (Except in the custom grid).
+
+@media (max-width: $screen-lg-max) {
+  @include responsive-invisibility('.visible-xl');
+}

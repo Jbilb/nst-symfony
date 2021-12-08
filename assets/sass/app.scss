@@ -1,0 +1,283 @@
+$screen-lg: 1200px;
+$screen-md: 992px;
+$screen-sm: 760px;
+$screen-xs: 480px;
+$screen-xss: 340px;
+
+$screen-xl: 1590px; // à décommenter plus tard (c'est dans _bootstrap_bp_1590)
+
+/*************************************************
+// BOOTSTRAP & VARIABLES
+*************************************************/
+
+$font-family-sans-serif: 'Open Sans',
+Arial,
+sans-serif;
+$font-size-base: 10px;
+$line-height-base: 1;
+$link-hover-color:inherit;
+$link-hover-decoration:none;
+//@import 'base/_bootstrap.scss';
+//@import 'base/_bootstrap_bp_1590.scss';
+
+/*************************************************
+// FONTS
+*************************************************/
+
+@import 'utilities/_fonts.scss';
+
+/*************************************************
+// MIXINS
+*************************************************/
+
+@import 'base/_mixins.scss';
+
+/*************************************************
+// COULEURS DU SITE
+*************************************************/
+
+@import 'utilities/_colors.scss';
+
+/*************************************************
+// BASE
+*************************************************/
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variant-ligatures: common-ligatures;
+    -webkit-font-variant-ligatures: common-ligatures;
+}
+
+/*************************************************
+// HACK BOOTSTRAP
+*************************************************/
+
+.container,
+.row,
+.container-fluid {
+    @include position(relative, 5);
+}
+
+.container,
+.container-fluid {
+    @media(max-width:$screen-sm) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+.container {
+    width: 81.25vw !important;
+    margin: 0 auto;
+
+    &.no-padding {
+        padding: 0;
+    }
+
+    @media screen and (max-width:$screen-md) {
+        width: 100% !important;
+    }
+}
+
+/*************************************************
+// BASE
+*************************************************/
+
+html {
+    font-size: 5.2px;
+    font-family: $font;
+    color: $noir;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    font-kerning: none;
+
+    &.noscroll {
+        overflow: hidden;
+    }
+
+    @media (min-width: $screen-sm) {
+        font-size: 6.1px;
+    }
+
+    @media (min-width: $screen-md) {
+        font-size: 7.2px;
+    }
+
+    @media (min-width: $screen-lg) {
+        font-size: 8.5px;
+    }
+
+    @media (min-width: $screen-xl) {
+        font-size: 10px;
+    }
+}
+
+body {
+    min-height: 100%;
+    width: 100%;
+    font-family: $font;
+    position: relative;
+}
+
+#wrapper {
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+button,
+input,
+textarea {
+    border: none;
+    background: none;
+}
+
+a,
+button {
+    transition: all .3s ease;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a img {
+    border: 0;
+}
+
+a:hover,
+button:hover {
+    text-decoration: none;
+}
+
+img,
+svg {
+    vertical-align: middle;
+    border: none;
+}
+
+b,
+strong {
+    font-family: $font;
+
+}
+
+ul,
+li {
+    list-style: none;
+    list-style-type: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+/*************************************************
+// STYLES DE CARATERES
+*************************************************/
+
+@import 'utilities/_styles-carateres';
+
+
+/*************************************************
+// PROPRIETES TEXTE
+*************************************************/
+
+.underline {
+    text-decoration: underline;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+br:not(.keep) {
+    @media screen and (max-width:$screen-md) {
+        display: none;
+    }
+}
+
+/*************************************************
+// BOUTONS
+*************************************************/
+
+@import 'utilities/_boutons';
+
+/*************************************************
+// CLASS UTILITAIRE
+*************************************************/
+
+.no-link-desktop {
+    @media screen and (min-width:$screen-md) {
+        pointer-events: none;
+        cursor: initial;
+    }
+}
+
+.hidden-pc {
+    @media screen and (min-width:$screen-md) {
+        display: none;
+    }
+}
+
+.hidden-mobile {
+    @media screen and (max-width:$screen-md) {
+        display: none;
+    }
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+
+/*************************************************
+// IMPORT DEPENDENCIES
+*************************************************/
+
+// Dependencies
+// @import '../../node_modules/slick-carousel/slick/slick.scss';
+
+// Partials
+@import 'partials/_header.scss';
+@import 'partials/_footer.scss';
+@import 'partials/_nav.scss';
+@import 'partials/_menu.scss';
+// Pages
+@import 'pages/_accueil.scss';
+@import 'pages/_page2.scss';
+@import 'pages/_page3.scss';
+@import 'pages/_contact.scss';
+@import 'pages/_legals.scss';
+@import 'pages/_erreur404.scss';
+
+// Components
+@import 'components/_cookies.scss';
+@import 'components/_formulaire.scss';
+
+
+// Utilities
+@import 'utilities/_fonts.scss';
+@import 'utilities/_animations.scss';
