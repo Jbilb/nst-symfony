@@ -1,4 +1,5 @@
 import '../sass/app.scss';
+//require('slick-carousel');
 
 (function ($) {
     $(function () {
