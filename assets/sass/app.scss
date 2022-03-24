@@ -56,6 +56,10 @@ $link-hover-decoration:none;
     -webkit-font-variant-ligatures: common-ligatures;
 }
 
+#section-top {
+    margin-top: 30rem;
+}
+
 /*************************************************
 // HACK BOOTSTRAP
 *************************************************/
@@ -269,7 +273,7 @@ br:not(.keep) {
 @import 'partials/_menu.scss';
 // Pages
 @import 'pages/_accueil.scss';
-@import 'pages/_page2.scss';
+@import 'pages/_login.scss';
 @import 'pages/_page3.scss';
 @import 'pages/_contact.scss';
 @import 'pages/_legals.scss';

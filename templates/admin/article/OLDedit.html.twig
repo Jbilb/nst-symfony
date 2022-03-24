@@ -1,0 +1,618 @@
+{% extends 'bundles/EasyAdminBundle/layout.html.twig' %}
+
+{% block content %}
+<!-- start content -->
+<div class="row actualite">
+    {{ form_start(form) }}
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Titre de la page</h3>
+            </div>
+            <div class="title_right">
+                <!-- boutons annuler/enregistrer -->
+            </div>
+        </div>
+        <div class="row">
+            <!-- start Admin -->
+            <div class="col-xs-12">
+                <div class="x_panel row">
+                    <!-- Titre, Categorie, Date & statut -->
+                    <div class="col-xs-12">
+                        <h3 class="category_title"><strong>TITRE, CATEGORIE, DATE, STATUT</strong></h3>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            {{ form_label(form.title) }}
+                            {{ form_widget(form.title) }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+                        <!-- catégories -->
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="form-group">
+                            {{ form_label(form.date_publication) }}
+                            {{ form_widget(form.date_publication) }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-sm-offset-2">
+                        <h4>Statut</h4>
+                        {{ form_label(form.is_active) }}
+                        {{ form_widget(form.is_active) }}
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-sm-offset-1">
+                        <h4>A la une:</h4>
+                        {{ form_label(form.featured) }}
+                        {{ form_widget(form.featured) }}
+                    </div>
+                    <!-- / Titre, Categorie, Date & statut + lectures -->
+
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12">
+                        <hr>
+                    </div>
+
+                    <!-- Tags -->
+
+                    <!-- / Tags -->
+
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12">
+                        <hr>
+                    </div>
+
+                    <!-- Couverture + chapeau -->
+                    <div class="from-group col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3 class="category_title"><strong>IMAGE DE COUVERTURE & CHAPEAU</strong></h3>
+                            </div>
+                            <div class="col-xs-12 col-sm-3">
+                                {{ form_label(form.cover_image) }}
+                                {{ form_widget(form.cover_image) }}
+                            </div>
+                            <div class="col-xs-12 col sm-3 apercu-image">
+                                <!-- A compléter -->
+                            </div>
+                            <div class="col-xs-12 col-sm-offset-1 col-sm-4">
+                                {{ form_label(form.intro_text) }}
+                                {{ form_widget(form.intro_text) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Couverture + chapeau -->
+
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12">
+                        <hr>
+                    </div>
+
+                    <!-- Page builder -->
+                    <div class="col-xs-12">
+                        <h3 class="category_title"><strong>CONSTRUCTION DU CORPS DE L'ARTICLE</strong></h3>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12">
+                        <hr>
+                    </div>
+                    <div class="col-xs-12 sortable" id="articleBody">
+                        {% if page_body is not empty %}
+                            {% for key, element in page_body|keys %}
+                                {% for index, value in element|keys %}
+                                    {% if index == 'body_titles' %}
+                                        <div class="article-item ui-state-default form-group">
+                                            <div class="form-group row">
+                                                <div class="col-xs-12 col-sm-4">
+                                                    <div class="form-checker">
+                                                        {{ form_label(form.body_titles) }}
+                                                        {{ form_widget(form.body_titles) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if index == 'body_texts' %}
+                                    
+                                    {% endif %}
+                                    {% if index == 'body_links' %}
+                                    
+                                    {% endif %}
+                                    {% if index == 'body_images' %}
+                                    
+                                    {% endif %}
+                                    {% if index == 'body_galeries' %}
+                                    
+                                    {% endif %}
+                                    {% if index == 'body_cta' %}
+                                    
+                                    {% endif %}
+                                    {% if index == 'body_videos' %}
+                                    
+                                    {% endif %}
+                                    {% if index == 'body_pdf' %}
+                                    
+                                    {% endif %}
+                                    {% if index == 'body_html_element' %}
+                                    
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <!-- / Page builder -->
+                    
+                    <div class="col-xs-12">
+                        <hr>
+                    </div>
+                    <div class="col-xs-12 buttons-edition-article">
+                        <h4>Ajouter un élément</h4>
+                        <br/>
+                        <button type="button" class="btn btn-success articleAddItem" data-target="modele_title" data-type="title">
+                            <span class="fa fa-font"></span> | <b>SOUS-TITRE</b>
+                        </button>&nbsp;&nbsp;
+                        
+                        <button type="button" class="btn btn-success articleAddItem" data-target="modele_text" data-type="text">
+                            <span class="fa fa-text-width"></span> | <b>ZONE DE TEXTE</b>
+                        </button>&nbsp;&nbsp;
+                        
+                        <button type="button" class="btn btn-success articleAddItem" data-target="modele_image" data-type="image">
+                            <span class="fa fa-image"></span> | <b>IMAGE</b>
+                        </button>&nbsp;&nbsp;
+                        
+                        <button type="button" class="btn btn-success articleAddItem" data-target="modele_link" data-type="link">
+                            <span class="fa fa-link"></span> | <b>LIEN (BOUTON)</b>
+                        </button>&nbsp;&nbsp;
+                        
+                        <button type="button" class="btn btn-success articleAddItem" data-target="modele_galerie" data-type="galerie">
+                            <span class="fa fa-folder-open"></span> | <b>GALERIE PHOTO</b>
+                        </button>&nbsp;&nbsp;
+                        
+                        <button type="button" class="btn btn-success articleAddItem" data-target="modele_cta" data-type="cta">
+                            <span class="fa fa-id-card-o"></span> | <b>CALL TO ACTION</b>
+                        </button>
+                        
+                        <button type="button" class="btn btn-success articleAddItem" data-target="modele_video" data-type="video">
+                            <span class="fa fa-video-camera"></span> | <b>VIDEO</b>
+                        </button>
+                        
+                        <button type="button" class="btn btn-success articleAddItem" data-target="modele_pdf" data-type="pdf">
+                            <span class="fa fa-file"></span> | <b>DOC. PDF</b>
+                        </button>
+                        
+                        <button type="button" class="btn btn-success articleAddItem" data-target="modele_html" data-type="html">
+                            <span class="fa fa-code"></span> | <b>CODE HTML</b>
+                        </button>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group pull-right text-right"> 
+                            <a href="articles/" class="btn btn-danger">Annuler</a>
+                            <button type="button" class="btn btn-success" data-form-checker>Enregistrer</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTENT OF PAGE ELEMENTS  -->
+        <div id="modele_title" class="article-item ui-state-default form-group hidden" 
+             data-prototype="{{ form_widget(form.body_titles.vars.prototype)|e }}"
+             data-widget-tags="{{ '<li></li>'|e }}"
+             data-widget-counter="{{ form.body_titles|length }}">
+            <div class="form-group row">
+                <div class="col-xs-12 col-sm-8">
+                    <div class="form-group form-checker">
+                        <label>Votre texte :</label>
+                        <article>
+                            {{ form_row(form.body_titles) }}
+                        </article>
+                        
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+                    <span class="bouton delete"><span class="fa fa-trash"></span></span>
+                    <span class="bouton move"><span class="fa fa-arrows"></span></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="modele_text" class="article-item ui-state-default form-group hidden" 
+             data-prototype="{{ form_widget(form.body_texts.vars.prototype)|e }}"
+             data-widget-tags="{{ '<li></li>'|e }}"
+             data-widget-counter="{{ form.body_texts|length }}">
+            <div class="form-group row">
+                <div class="col-xs-12 col-sm-8">
+                    <div class="form-group form-checker">
+                        <label>Votre texte :</label>
+                        <article>
+                            {{ form_row(form.body_texts) }}
+                        </article>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+                    <span class="bouton delete"><span class="fa fa-trash"></span></span>
+                    <span class="bouton move"><span class="fa fa-arrows"></span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modele_image" class="article-item ui-state-default form-group hidden">
+            <div class="form-group row">
+                <div class="col-xs-12 col-sm-4 form-checker">
+                    <label>Insérer une image <br> <small>Format d'image : 1200x800</small></label>
+                    <div class="uploadfile">
+                        <label for="ImageToUpload" class="label-file btn btn-info">Ajouter une image </label>
+                        <input id="ImageToUpload" class="input-file content" type="file" accept=".jpg,.JPG,.PNG,.png,.jpeg,.JPEG" required name="required[image_normal][body_images][]"><br/>
+                        <span class="nom-fichier">Aucun fichier sélectionné</span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 apercu-image">
+                    <label>Aperçu de votre image </label>
+                    <img src="" class="img-responsive" alt="">
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+                    <span class="bouton delete"><span class="fa fa-trash"></span></span>
+                    <span class="bouton move"><span class="fa fa-arrows"></span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modele_link" class="article-item ui-state-default form-group hidden" 
+             data-prototype="{{ form_widget(form.body_texts.vars.prototype)|e }}"
+             data-widget-tags="{{ '<li></li>'|e }}"
+             data-widget-counter="{{ form.body_texts|length }}">
+            <div class="form-group row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        {# <div class="form-checker">
+                            <label>Lien (URL) :</label>
+                            <input class="form-control content" placeholder="Entrez l'URL de votre lien :" type="text" name="required[url][body_links][][link]" data-required="Vous devez spécifier l'url de votre lien" required>
+                        </div>
+                        <br/>
+                        <div class="form-checker">
+                            <label>Libellé (texte du bouton) :</label>
+                            <input class="form-control content" placeholder="Entrez le libellé de votre lien :" type="text" name="required[alphanum][body_links][][label]" data-required="Vous devez spécifier le libellé de votre lien"  required>
+                        </div> #}
+                        <article>
+                            {# {{ form_row(form.body_links.link_url) }} #}
+                        </article>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+                    <span class="bouton delete"><span class="fa fa-trash"></span></span>
+                    <span class="bouton move"><span class="fa fa-arrows"></span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modele_galerie" class="article-item ui-state-default form-group hidden">
+            <div class="form-group row">
+                <div class="col-xs-12 col-sm-6 apercu-image">
+                    <label>Aperçu de votre galerie </label>
+                    <br/>
+                    <img src="" class="img-responsive" alt="">
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+                    <span class="bouton delete"><span class="fa fa-trash"></span></span>
+                    <span class="bouton move"><span class="fa fa-arrows"></span></span>
+                </div>
+                <div class="col-xs-12">
+                <label>Galerie photo :  <br><small>Format : 1200x800</small></label><br/>
+                    <div class="uploadfile form-checker">
+                        <label for="GalerieToUpload" class="label-file btn btn-info">Ajouter des images</label>
+                        <input id="GalerieToUpload" class="input-galerie content" type="file" accept=".jpg,.JPG,.PNG,.png,.jpeg,.JPEG" multiple required name="required[image_galerie][body_galeries][][]" data-required="Vous devez sélectionner des images"><br/>
+                        <em>Sélectionnez plusieurs images à la fois dans la boîte de dialogue</em>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modele_cta" class="article-item ui-state-default form-group hidden">
+            <div class="form-group row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-checker">
+                        <label>Titre du CTA :</label>
+                        <input class="form-control content" placeholder="Entrez le titre de votre CTA :" type="text" name="required[alphanum][body_cta][][titre]" data-required="Vous devez entrer un titre" required>
+                    </div><br/>
+                    <div class="form-checker">
+                        <label>Texte du CTA :</label>
+                        <textarea class="form-control content" placeholder="Entrez le texte de votre CTA :" type="text" name="required[body_cta][][texte]" data-required="Vous devez entrer un texte descriptif" required></textarea>
+                    </div><br/>
+                    <div class="form-checker">
+                        <label>URL du lien du CTA :</label>
+                        <input class="form-control content" placeholder="Entrez l'URL du lien de votre CTA :" type="text" name="required[url][body_cta][][lien]" data-required="Vous devez entrer une URL" required>
+                    </div><br/>
+                    <div class="form-checker">
+                        <label>Libellé du lien du CTA :</label>
+                        <input class="form-control content" placeholder="Entrez le libellé du lien de votre CTA :" type="text" name="required[alphanum][body_cta][][label]" data-required="Vous devez entrer un label pour votre lien" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1">
+                    <label>Insérer une image <br/><small>Format : 400x270</small></label>
+                    <div class="uploadfile form-checker">
+                        <label for="ImageCTA" class="label-file btn btn-info">Ajouter une image </label>
+                        <input id="ImageCTA" class="input-file content" type="file" accept=".jpg,.jpeg,.png" data-required="Vous devez choisir une image" name="required[image_small][body_cta][][image]"><br/>
+                        <span class="nom-fichier">Aucun fichier sélectionné</span>
+                        <br/>
+                    </div>
+                    <br/>
+                    <div class="apercu-image image-masked">
+                        <label>Aperçu de votre image </label>
+                        <img src="" class="img-responsive" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+                    <span class="bouton delete"><span class="fa fa-trash"></span></span>
+                    <span class="bouton move"><span class="fa fa-arrows"></span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modele_video" class="article-item ui-state-default form-group hidden" 
+             data-prototype="{{ form_widget(form.body_videos.vars.prototype)|e }}"
+             data-widget-tags="{{ '<li></li>'|e }}"
+             data-widget-counter="{{ form.body_videos|length }}">
+            <div class="form-group row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group form-checker">
+                        <label>Vidéo :</label>
+                        <article>
+                            {{ form_row(form.body_videos) }}
+                        </article>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+                    <span class="bouton delete"><span class="fa fa-trash"></span></span>
+                    <span class="bouton move"><span class="fa fa-arrows"></span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modele_pdf" class="article-item ui-state-default form-group hidden">
+            <div class="form-group row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-checker">
+                        <label>Intitulé du fichier :</label>
+                        <input class="form-control content" placeholder="Entrez l'intitulé de votre fichier :" type="text" name="required[body_pdf][][titre]" data-required="Vous devez entrer un titre" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1">
+                    <label>Sélectionner un fichier <br/><small>Format : PDF</small></label>
+                    <div class="uploadfile form-checker">
+                        <label for="PDFToUpload" class="label-file btn btn-info">Ajouter un fichier</label>
+                        <input id="PDFToUpload" class="input-file content" type="file" accept=".pdf" data-required="Vous devez choisir un fichier" name="required[pdf][body_pdf][][file]"><br/>
+                        <span class="nom-fichier">Aucun fichier sélectionné</span>
+                        <br/>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+                    <span class="bouton delete"><span class="fa fa-trash"></span></span>
+                    <span class="bouton move"><span class="fa fa-arrows"></span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modele_html" class="article-item ui-state-default form-group hidden" 
+             data-prototype="{{ form_widget(form.body_html_element.vars.prototype)|e }}"
+             data-widget-tags="{{ '<li></li>'|e }}"
+             data-widget-counter="{{ form.body_html_element|length }}">
+            <div class="form-group row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-checker">
+                        <label>Insérer votre code HTML :</label>
+                        <!-- <textarea class="form-control content" placeholder="Copiez / Coller le code HTML à afficher sur le site" name="required[body_html_element][]" data-required="Vous devez copier/coller le code HTML à insérer" required></textarea> -->
+                        <article>
+                            {{ form_row(form.body_html_element) }}
+                        </article>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+                    <span class="bouton delete"><span class="fa fa-trash"></span></span>
+                    <span class="bouton move"><span class="fa fa-arrows"></span></span>
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+
+<!-- CONTENT OF PAGE ELEMENTS -->
+
+
+
+
+<!-- <div id="modele_title" class="article-item ui-state-default form-group hidden">
+    <div class="form-group row">
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group form-checker">
+                {{ form_label(form.body_titles) }}
+                {{ form_widget(form.body_titles) }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+            <span class="bouton delete"><span class="fa fa-trash"></span></span>
+            <span class="bouton move"><span class="fa fa-arrows"></span></span>
+        </div>
+    </div>
+</div> -->
+
+<!-- <div id="modele_text" class="article-item ui-state-default form-group hidden">
+    <div class="form-group row">
+        <div class="col-xs-12 col-sm-8">
+            <div class="form-group form-checker">
+                <label>Votre texte :</label>
+                <textarea name="body_texts[]" class="content"></textarea>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+            <span class="bouton delete"><span class="fa fa-trash"></span></span>
+            <span class="bouton move"><span class="fa fa-arrows"></span></span>
+        </div>
+    </div>
+</div>
+
+<div id="modele_image" class="article-item ui-state-default form-group hidden">
+    <div class="form-group row">
+        <div class="col-xs-12 col-sm-4 form-checker">
+            <label>Insérer une image <br> <small>Format d'image : 1200x800</small></label>
+            <div class="uploadfile">
+                <label for="ImageToUpload" class="label-file btn btn-info">Ajouter une image </label>
+                <input id="ImageToUpload" class="input-file content" type="file" accept=".jpg,.JPG,.PNG,.png,.jpeg,.JPEG" required name="required[image_normal][body_images][]"><br/>
+                <span class="nom-fichier">Aucun fichier sélectionné</span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 apercu-image">
+            <label>Aperçu de votre image </label>
+            <img src="" class="img-responsive" alt="">
+        </div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+            <span class="bouton delete"><span class="fa fa-trash"></span></span>
+            <span class="bouton move"><span class="fa fa-arrows"></span></span>
+        </div>
+    </div>
+</div>
+
+<div id="modele_link" class="article-item ui-state-default form-group hidden">
+    <div class="form-group row">
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <div class="form-checker">
+                    <label>Lien (URL) :</label>
+                    <input class="form-control content" placeholder="Entrez l'URL de votre lien :" type="text" name="required[url][body_links][][link]" data-required="Vous devez spécifier l'url de votre lien" required>
+                </div>
+                <br/>
+                <div class="form-checker">
+                    <label>Libellé (texte du bouton) :</label>
+                    <input class="form-control content" placeholder="Entrez le libellé de votre lien :" type="text" name="required[alphanum][body_links][][label]" data-required="Vous devez spécifier le libellé de votre lien"  required>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+            <span class="bouton delete"><span class="fa fa-trash"></span></span>
+            <span class="bouton move"><span class="fa fa-arrows"></span></span>
+        </div>
+    </div>
+</div>
+
+<div id="modele_galerie" class="article-item ui-state-default form-group hidden">
+    <div class="form-group row">
+        <div class="col-xs-12 col-sm-6 apercu-image">
+            <label>Aperçu de votre galerie </label>
+            <br/>
+            <img src="" class="img-responsive" alt="">
+        </div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+            <span class="bouton delete"><span class="fa fa-trash"></span></span>
+            <span class="bouton move"><span class="fa fa-arrows"></span></span>
+        </div>
+        <div class="col-xs-12">
+        <label>Galerie photo :  <br><small>Format : 1200x800</small></label><br/>
+            <div class="uploadfile form-checker">
+                <label for="GalerieToUpload" class="label-file btn btn-info">Ajouter des images</label>
+                <input id="GalerieToUpload" class="input-galerie content" type="file" accept=".jpg,.JPG,.PNG,.png,.jpeg,.JPEG" multiple required name="required[image_galerie][body_galeries][][]" data-required="Vous devez sélectionner des images"><br/>
+                <em>Sélectionnez plusieurs images à la fois dans la boîte de dialogue</em>
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modele_cta" class="article-item ui-state-default form-group hidden">
+    <div class="form-group row">
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-checker">
+                <label>Titre du CTA :</label>
+                <input class="form-control content" placeholder="Entrez le titre de votre CTA :" type="text" name="required[alphanum][body_cta][][titre]" data-required="Vous devez entrer un titre" required>
+            </div><br/>
+            <div class="form-checker">
+                <label>Texte du CTA :</label>
+                <textarea class="form-control content" placeholder="Entrez le texte de votre CTA :" type="text" name="required[body_cta][][texte]" data-required="Vous devez entrer un texte descriptif" required></textarea>
+            </div><br/>
+            <div class="form-checker">
+                <label>URL du lien du CTA :</label>
+                <input class="form-control content" placeholder="Entrez l'URL du lien de votre CTA :" type="text" name="required[url][body_cta][][lien]" data-required="Vous devez entrer une URL" required>
+            </div><br/>
+            <div class="form-checker">
+                <label>Libellé du lien du CTA :</label>
+                <input class="form-control content" placeholder="Entrez le libellé du lien de votre CTA :" type="text" name="required[alphanum][body_cta][][label]" data-required="Vous devez entrer un label pour votre lien" required>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1">
+            <label>Insérer une image <br/><small>Format : 400x270</small></label>
+            <div class="uploadfile form-checker">
+                <label for="ImageCTA" class="label-file btn btn-info">Ajouter une image </label>
+                <input id="ImageCTA" class="input-file content" type="file" accept=".jpg,.jpeg,.png" data-required="Vous devez choisir une image" name="required[image_small][body_cta][][image]"><br/>
+                <span class="nom-fichier">Aucun fichier sélectionné</span>
+                <br/>
+            </div>
+            <br/>
+            <div class="apercu-image image-masked">
+                <label>Aperçu de votre image </label>
+                <img src="" class="img-responsive" alt="">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+            <span class="bouton delete"><span class="fa fa-trash"></span></span>
+            <span class="bouton move"><span class="fa fa-arrows"></span></span>
+        </div>
+    </div>
+</div>
+
+<div id="modele_video" class="article-item ui-state-default form-group hidden">
+    <div class="form-group row">
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group form-checker">
+                <label>Vidéo :</label>
+                <input class="form-control content" placeholder="Entrez l'URL de votre vidéo (Youtube / Viméo) :" type="text" name="required[url][body_videos][]" data-required="Vous devez entrer l'URL de votre vidéo" required>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+            <span class="bouton delete"><span class="fa fa-trash"></span></span>
+            <span class="bouton move"><span class="fa fa-arrows"></span></span>
+        </div>
+    </div>
+</div>
+
+<div id="modele_pdf" class="article-item ui-state-default form-group hidden">
+    <div class="form-group row">
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-checker">
+                <label>Intitulé du fichier :</label>
+                <input class="form-control content" placeholder="Entrez l'intitulé de votre fichier :" type="text" name="required[body_pdf][][titre]" data-required="Vous devez entrer un titre" required>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1">
+            <label>Sélectionner un fichier <br/><small>Format : PDF</small></label>
+            <div class="uploadfile form-checker">
+                <label for="PDFToUpload" class="label-file btn btn-info">Ajouter un fichier</label>
+                <input id="PDFToUpload" class="input-file content" type="file" accept=".pdf" data-required="Vous devez choisir un fichier" name="required[pdf][body_pdf][][file]"><br/>
+                <span class="nom-fichier">Aucun fichier sélectionné</span>
+                <br/>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+            <span class="bouton delete"><span class="fa fa-trash"></span></span>
+            <span class="bouton move"><span class="fa fa-arrows"></span></span>
+        </div>
+    </div>
+</div>
+
+<div id="modele_html" class="article-item ui-state-default form-group hidden">
+    <div class="form-group row">
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-checker">
+                <label>Insérer votre code HTML :</label>
+                <textarea class="form-control content" placeholder="Copiez / Coller le code HTML à afficher sur le site" name="required[body_html_element][]" data-required="Vous devez copier/coller le code HTML à insérer" required></textarea>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1 item-edition">
+            <span class="bouton delete"><span class="fa fa-trash"></span></span>
+            <span class="bouton move"><span class="fa fa-arrows"></span></span>
+        </div>
+    </div>
+</div> -->
+
+<!-- end content  -->
+{% endblock %}

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="fr" class="?php echo $classHTML; ?>">
+    <head>{% include '_includes/_head.html.twig' %}</head>
+
+    <body id="top-page" class={{ PAGE_name }}>
+        <div id="wrapper" class="blanc-bg  <?php echo $classAnimation; ?>">
+            {% block wrapper %}{% endblock %}
+        </div>
+    </body>
+</html>

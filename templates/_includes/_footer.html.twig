@@ -26,13 +26,11 @@
     </div>
 </div>
 <!-- Scripts -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="{{ asset('tarteaucitron.js', 'tarteaucitron') }}"></script>
 {% block javascripts %}
     {{ encore_entry_script_tags('form-mail-contactJs') }}
     {{ encore_entry_script_tags('cookiesJs') }}
-    {{ encore_entry_script_tags('app') }}  
+    {{ encore_entry_script_tags('app') }} 
+    {{ encore_entry_script_tags('admin_article') }} 
 {% endblock %}
-<script type="text/javascript" src="{{ asset('node_modules/slick-carousel/slick/slick.min.js') }}"></script>
 
 <!-- GOOGLE MAPS API (MULTIPOINTS) -->

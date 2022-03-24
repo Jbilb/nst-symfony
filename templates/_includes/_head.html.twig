@@ -16,11 +16,11 @@
 
     <!-- SOCIAL MEDIA SHARING -->
 
-    <meta property="og:url" content="$ogURL" />
+    <meta property="og:url" content="{{ ogURL }}" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content= {{ META_title }}/>
     <meta property="og:description" content= {{ META_description }}/>
-    <meta property="og:image" content="$ogIMG" />
+    <meta property="og:image" content="{{ ogIMG }}" />
     <!-- CSS  -->
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}

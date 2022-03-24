@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ HEADER_title }}{% endblock %}
+
+{# Voir le controller IndexController pour les variables Twig disponibles sur cette page #}
+
+{% block wrapper %}
+<section id="section-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                {{ restaurant.name }} <br>
+                <!-- 
+                    La création du cookie est gérée en Javascript par la fonction addFavoriteRestaurant() dans app.js.
+                    La récupération du cookie est gérée en PHP dans IndexController.php.
+                -->
+                <button id="restaurant-favori" data-id="{{ restaurant.id }}">Ajouter en favori</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

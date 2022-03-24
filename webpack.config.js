@@ -21,8 +21,11 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
+    .addEntry('app_admin', './assets/js/admin/app_admin.js')
     .addEntry('cookiesJs', './assets/js/components/cookies.js')
     .addEntry('form-mail-contactJs', './assets/js/components/form-mail-contact.js')
+    .addEntry('address-manager', './assets/js/components/address-manager.js')
+    .addEntry('admin_article', './assets/js/admin/app.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
@@ -71,7 +74,12 @@ Encore
     //.enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+    .autoProvidejQuery()
+    .autoProvideVariables({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();

@@ -1,0 +1,34 @@
+{% extends 'base_login.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block wrapper %}
+<section id="section-top">
+    <section class="register-section">
+        <div id="container">
+            {% for flashError in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+            {% endfor %}
+
+            {{ form_start(registrationForm) }}
+                <h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
+                Vous serez redirigé dès votre inscription sur la page de connexion. <br><br>
+                Veuillez confirmer votre inscription en suivant les indications du mail de confirmation. <br><br>
+                Pour vous connecter, votre compte doit être validé par un administrateur. <br><br><br>
+              
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Mot de passe'
+                }) }}
+                <div class="div-label">
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                    {{ form_errors(registrationForm.agreeTerms) }}
+                    {{ form_label(registrationForm.agreeTerms, "En soumettant ce formulaire, j'accepte que les données transmises soient exploitées par ADN Patrimoine.", {'label_attr': {'class': 'agree-terms'}}) }}    
+                </div>
+                <!-- <button type="submit" class="btn">Register</button> -->
+                <input type="submit" id='submit' value="S'inscrire" >    
+            {{ form_end(registrationForm) }}
+        </div>
+    </section>
+</section>
+{% endblock %}

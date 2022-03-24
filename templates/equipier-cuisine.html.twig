@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ HEADER_title }}{% endblock %}
+
+{# Voir le controller IndexController pour les variables Twig disponibles sur cette page #}
+
+{% block wrapper %}
+<section id="section-top">
+    {{form_start(form)}}
+        <button type="submit" class="bouton v-orange">
+            <span>
+                Valider
+            </span>
+        </button>   
+    {{form_end(form)}}
+</section>
+{% endblock %}

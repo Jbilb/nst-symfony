@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ HEADER_title }}{% endblock %}
+
+{# Voir le controller IndexController pour les variables Twig disponibles sur cette page #}
+
+{% block wrapper %}
+<section id="section-top">
+    <ul>
+        {% for faqQuestion in faqQuestions %}
+        <li>
+            <!-- Question -->
+            {{ faqQuestion.title}} <br>
+            <!-- Réponse -->
+            {{ faqQuestion.description }}
+        </li>
+    {% endfor %}
+    </ul>
+    {{form(form)}}
+</section>
+{% endblock %}
